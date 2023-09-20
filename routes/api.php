@@ -36,6 +36,7 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 Route::post('/create-new-password', [AuthController::class, 'createNewPassword']);
 
 Route::get('cities', [MainController::class, 'cities']);
+Route::get('governorate-cities/{id}', [MainController::class, 'governorateCities']);    // get cities of a particular governorate
 Route::get('settings', 'Api\MainController@settings');
 Route::get('categories', 'Api\MainController@categories');
 Route::get('governorates', 'Api\MainController@governorates');
@@ -50,6 +51,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     # Notifications
     Route::post('/notifications', 'Api\NotificationController@notifications');
     Route::post('/view-notifications-settings', 'Api\NotificationController@viewNotificationsSettings');
+   
     
     Route::post('/update-notifications-settings', 'Api\NotificationController@updateNotificationsSettings');
 
@@ -70,6 +72,7 @@ Route::get('/view-one-donation-request/{id}', 'Api\DonationRequestController@vie
 Route::post('/view-posts', 'Api\PostController@viewPosts');
 Route::get('/view-one-post/{id}', 'Api\PostController@viewOnePost');
 
+//Route::apiResources();
 Route::post('/attachClientBloodType', 'Api\NotificationController@attachClientBloodType');
 
 
