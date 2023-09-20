@@ -25,6 +25,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
 
 # Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -39,14 +42,15 @@ Route::get('governorates', 'Api\MainController@governorates');
 
 
 Route::group(['middleware'=>'auth:api'], function(){
-    # Not yet Finished
+    # Finished
     Route::post('/profile', 'Api\AuthController@profile');
+    Route::post('/register-token', 'Api\AuthController@registerToken');
+    Route::post('/remove-token', 'Api\AuthController@removeToken');
 
     # Notifications
     Route::post('/notifications', 'Api\NotificationController@notifications');
     Route::post('/view-notifications-settings', 'Api\NotificationController@viewNotificationsSettings');
     
-    // use PUT here
     Route::post('/update-notifications-settings', 'Api\NotificationController@updateNotificationsSettings');
 
     # Posts
@@ -65,6 +69,7 @@ Route::get('/view-one-donation-request/{id}', 'Api\DonationRequestController@vie
 # Posts
 Route::post('/view-posts', 'Api\PostController@viewPosts');
 Route::get('/view-one-post/{id}', 'Api\PostController@viewOnePost');
+
 
 Route::post('/attachClientBloodType', 'Api\NotificationController@attachClientBloodType');
 
