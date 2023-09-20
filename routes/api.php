@@ -70,7 +70,6 @@ Route::get('/view-one-donation-request/{id}', 'Api\DonationRequestController@vie
 Route::post('/view-posts', 'Api\PostController@viewPosts');
 Route::get('/view-one-post/{id}', 'Api\PostController@viewOnePost');
 
-
 Route::post('/attachClientBloodType', 'Api\NotificationController@attachClientBloodType');
 
 
