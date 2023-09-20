@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\governoratesController;
-use App\Http\Controllers\Admin\citiesController;
-use App\Http\Controllers\Admin\categoriesController;
-use App\Http\Controllers\Admin\postsController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +13,9 @@ use App\Http\Controllers\Admin\postsController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 //Route::group(['middleware'=>'auth'], function(){
     Route::get('/admin/home', function () {
         return view('admin.home');
@@ -30,6 +28,10 @@ Route::prefix('admin')->group(function (){
     Route::resource('cities', 'Admin\citiesController');
     Route::resource('categories', 'Admin\categoriesController');
     Route::resource('posts', 'Admin\postsController');
+    Route::resource('clients', 'Admin\clientsController');
+    Route::resource('donations', 'Admin\donationsController');
+    Route::resource('contacts', 'Admin\contactsController');
+    Route::resource('settings', 'Admin\settingsController');
 });
 
 Auth::routes();

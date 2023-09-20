@@ -50,7 +50,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     # Notifications
     Route::post('/notifications', 'Api\NotificationController@notifications');
     Route::post('/view-notifications-settings', 'Api\NotificationController@viewNotificationsSettings');
-    
+    // use PUT here
     Route::post('/update-notifications-settings', 'Api\NotificationController@updateNotificationsSettings');
 
     # Posts
